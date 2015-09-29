@@ -6,12 +6,20 @@ from appium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
+    'deviceName':       'iPhone 6',
     'appiumVersion':    '1.4.11',
     'browserName':      '',
     'platformName':     'iOS',
     'platformVersion':  '8.4',
     'deviceOrientation':'portrait',
+    'app':              'https://s3.amazonaws.com/appium/TestApp8.4.app.zip'
+},{
     'deviceName':       'iPhone 6 Device',
+    'appiumVersion':    '1.4.11',
+    'browserName':      '',
+    'platformName':     'iOS',
+    'platformVersion':  '8.4',
+    'deviceOrientation':'portrait',
     'app':              'sauce-storage:TestApp-iphoneos.app.zip'
 }]
 
@@ -40,7 +48,22 @@ class FirstSampleTest(unittest.TestCase):
            desired_capabilities=self.desired_capabilities)
 
     # click to make a new note in the app
-    def test_note(self):
+    def test_sum1(self):
+        # populate text fields with values
+        field_one = self.driver.find_element_by_accessibility_id("TextField1")
+        field_one.send_keys("12")
+
+        field_two = self.driver.find_elements_by_class_name("UIATextField")[1]
+        field_two.send_keys("8")
+
+        # trigger computation by using the button
+        self.driver.find_element_by_accessibility_id("ComputeSumButton").click();
+
+        # is sum equal?
+        sum = self.driver.find_element_by_class_name("UIAStaticText").text;
+        assert int(sum) == 20, "ERROR MESSAGE"
+
+    def test_sum2(self):
         # populate text fields with values
         field_one = self.driver.find_element_by_accessibility_id("TextField1")
         field_one.send_keys("12")
