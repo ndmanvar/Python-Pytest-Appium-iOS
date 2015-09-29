@@ -9,7 +9,7 @@ browsers = [{
     'appiumVersion':    '1.4.11',
     'browserName':      '',
     'platformName':     'iOS',
-    'platformVersion':  '9.0',
+    'platformVersion':  '8.4',
     'deviceOrientation':'portrait',
     'deviceName':       'iPhone 6 Device',
     'app':              'sauce-storage:TestApp-iphoneos.app.zip'
@@ -45,14 +45,14 @@ class FirstSampleTest(unittest.TestCase):
         field_one = self.driver.find_element_by_accessibility_id("TextField1")
         field_one.send_keys("12")
 
-        field_two = self.driver.find_elements_by_name("UIATextField")[1]
+        field_two = self.driver.find_elements_by_class_name("UIATextField")[1]
         field_two.send_keys("8")
 
         # trigger computation by using the button
         self.driver.find_element_by_accessibility_id("ComputeSumButton").click();
 
         # is sum equal?
-        sum = self.driver.find_element_by_name("UIAStaticText").text();
+        sum = self.driver.find_element_by_class_name("UIAStaticText").text;
         assert int(sum) == 20, "ERROR MESSAGE"
 
     # tearDown runs after each test case
