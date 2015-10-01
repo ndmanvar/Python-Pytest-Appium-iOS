@@ -6,7 +6,7 @@ from appium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
-    'deviceName':       'iPhone 6',
+    'deviceName':       'iPhone 5',
     'appiumVersion':    '1.4.11',
     'browserName':      '',
     'platformName':     'iOS',
@@ -14,13 +14,13 @@ browsers = [{
     'deviceOrientation':'portrait',
     'app':              'https://s3.amazonaws.com/appium/TestApp8.4.app.zip'
 },{
-    'deviceName':       'iPhone 6 Device',
+    'deviceName':       'iPhone 6',
     'appiumVersion':    '1.4.11',
     'browserName':      '',
     'platformName':     'iOS',
     'platformVersion':  '8.4',
     'deviceOrientation':'portrait',
-    'app':              'sauce-storage:TestApp-iphoneos.app.zip'
+    'app':              'https://s3.amazonaws.com/appium/TestApp8.4.app.zip'
 }]
 
 username = os.environ['SAUCE_USERNAME']
