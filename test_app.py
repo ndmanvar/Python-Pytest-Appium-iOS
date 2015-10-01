@@ -5,7 +5,7 @@ import new
 from appium import webdriver
 from sauceclient import SauceClient
 
-browsers = [{
+devices = [{
     'deviceName':       'iPhone 5',
     'appiumVersion':    '1.4.11',
     'browserName':      '',
@@ -26,7 +26,7 @@ browsers = [{
 username = os.environ['SAUCE_USERNAME']
 access_key = os.environ['SAUCE_ACCESS_KEY']
 
-# This decorator is required to iterate over browsers
+# This decorator is required to iterate over devices
 def on_platforms(platforms):
     def decorator(base_class):
         module = sys.modules[base_class.__module__].__dict__
@@ -37,7 +37,7 @@ def on_platforms(platforms):
             module[name] = new.classobj(name, (base_class,), d)
     return decorator
 
-@on_platforms(browsers)
+@on_platforms(devices)
 class FirstSampleTest(unittest.TestCase):
 
     # setUp runs before each test case
